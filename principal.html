@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTI Educando | RPG de Aprendizado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        body { font-family: 'Outfit', sans-serif; background-color: #060912; color: white; overflow-x: hidden; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .progress-fill { transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+        .char-card:hover { border-color: #8b5cf6; box-shadow: 0 0 40px rgba(139, 92, 246, 0.2); }
+        .item-slot { width: 60px; height: 60px; background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.1); border-radius: 15px; display: flex; align-items: center; justify-center; font-size: 1.5rem; transition: 0.3s; }
+        .item-active { border-color: #fbbf24; color: #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.3); }
+        .hero-option:hover { transform: translateY(-10px); border-color: #ec4899; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- TELA DE SELEÇÃO DE PERSONAGEM (MODAL INICIAL) -->
+    <div id="selectionScreen" class="fixed inset-0 z-[100] bg-[#060912] flex flex-col items-center justify-center p-6 overflow-y-auto">
+        <h1 class="text-4xl md:text-6xl font-black mb-4 text-center italic tracking-tighter">ESCOLHA SEU <span class="text-purple-500">HERÓI</span></h1>
+        <p class="text-slate-400 mb-12 text-center max-w-2xl">Cada herói tem um talento natural. O seu progresso nas matérias escolares dará o poder necessário para eles evoluírem.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+            <!-- Mago do Saber -->
+            <div onclick="selectHero('Mago', 'Humanas', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Vivian')" class="hero-option glass p-8 rounded-[40px] border-2 border-transparent cursor-pointer transition-all text-center">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Vivian" class="w-32 h-32 mx-auto mb-6 bg-slate-800 rounded-full">
+                <h3 class="text-2xl font-black mb-2">Mago Arcano</h3>
+                <p class="text-purple-400 text-sm font-bold mb-4 uppercase">Foco: Redes de Computadores</p>
+                <p class="text-slate-500 text-xs">Transforma redes em teias poderosos de comunicação.</p>
+            </div>
+            <!-- Engenheiro de Ferro -->
+            <div onclick="selectHero('Engenheiro', 'Exatas', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix')" class="hero-option glass p-8 rounded-[40px] border-2 border-transparent cursor-pointer transition-all text-center">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-32 h-32 mx-auto mb-6 bg-slate-800 rounded-full">
+                <h3 class="text-2xl font-black mb-2">Tecnomante</h3>
+                <p class="text-blue-400 text-sm font-bold mb-4 uppercase">Foco: Desenvolvimento de sistemas</p>
+                <p class="text-slate-500 text-xs">Usa a lógica para construir conhecimento imortal.</p>
+            </div>
+            <!-- Bio-Explorador -->
+            <div onclick="selectHero('Explorador', 'Natureza', 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aria')" class="hero-option glass p-8 rounded-[40px] border-2 border-transparent cursor-pointer transition-all text-center">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aria" class="w-32 h-32 mx-auto mb-6 bg-slate-800 rounded-full">
+                <h3 class="text-2xl font-black mb-2">Guardião</h3>
+                <p class="text-green-400 text-sm font-bold mb-4 uppercase">Foco: Inglês e Emprendedorismo</p>
+                <p class="text-slate-500 text-xs">Controla as força da comunicação e multiplicar os poderes .</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="hidden flex">
+        <!-- SIDEBAR -->
+        <aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 bg-[#060912] border-r border-slate-800 p-6">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center shadow-lg font-black text-xl italic">G</div>
+                <span class="text-xl font-extrabold tracking-tighter">GAMETIEDUCANDO</span>
+            </div>
+
+            <nav class="space-y-3 flex-1">
+                <button onclick="showTab('dashboard')" class="nav-btn w-full flex items-center gap-4 p-3 rounded-xl transition text-slate-400 hover:bg-slate-800/50" id="btn-dashboard">
+                    <i class="fas fa-th-large"></i> Painel
+                </button>
+                <button onclick="showTab('personagem')" class="nav-btn w-full flex items-center gap-4 p-3 rounded-xl transition text-slate-400 hover:bg-slate-800/50" id="btn-personagem">
+                    <i class="fas fa-user-shield"></i> Meu Herói
+                </button>
+                <button onclick="showTab('aulas')" class="nav-btn w-full flex items-center gap-4 p-3 rounded-xl transition text-slate-400 hover:bg-slate-800/50" id="btn-aulas">
+                    <i class="fas fa-play-circle"></i> Videoaulas
+                </button>
+                <button onclick="showTab('jogos')" class="nav-btn w-full flex items-center gap-4 p-3 rounded-xl transition text-slate-400 hover:bg-slate-800/50" id="btn-jogos">
+                    <i class="fas fa-gamepad"></i> Arena de Jogos
+                </button>
+            </nav>
+
+            <div class="glass p-4 rounded-2xl">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[10px] font-black uppercase text-slate-400">LV <span id="sideLevel">1</span></span>
+                    <span class="text-[10px] font-black text-purple-400" id="sideXP">0/1000</span>
+                </div>
+                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div id="sideXPBar" class="progress-fill h-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 p-6 md:p-10">
+            
+            <!-- 1. DASHBOARD -->
+            <section id="dashboard" class="tab-content active">
+                <div class="flex justify-between items-end mb-10">
+                    <div>
+                        <h1 class="text-4xl font-black italic">MAPA DO SABER</h1>
+                        <p class="text-slate-400">Estude matérias para ganhar XP e itens para seu herói.</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-slate-500 uppercase">Seu Ouro</p>
+                        <p class="text-2xl font-black text-yellow-500"><i class="fas fa-coins"></i> <span id="goldCount">100</span></p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="dashboardGrid"></div>
+            </section>
+
+            <!-- 2. MEU HERÓI (RPG) -->
+            <section id="personagem" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Ficha Técnica -->
+                    <div class="glass p-8 rounded-[40px] text-center char-card border-2 border-transparent transition-all">
+                        <div class="relative inline-block mb-6">
+                            <img id="heroAvatarImg" src="" class="w-48 h-48 rounded-full bg-slate-800 border-4 border-purple-500 shadow-2xl">
+                            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-1 rounded-full text-xs font-black shadow-lg" id="heroLevelTag">NÍVEL 1</div>
+                        </div>
+                        <h2 class="text-3xl font-black mb-1" id="heroNameDisplay">Carregando...</h2>
+                        <p id="heroTitle" class="text-purple-400 text-sm font-bold uppercase tracking-widest mb-8">Novato do Reino</p>
+                        
+                        <p class="text-xs font-bold text-slate-500 mb-4 uppercase tracking-tighter text-left">Equipamentos Encontrados</p>
+                        <div class="flex justify-center gap-3 mb-8">
+                            <div id="slot-head" class="item-slot" title="Cabeça"><i class="fas fa-question opacity-20"></i></div>
+                            <div id="slot-weapon" class="item-slot" title="Arma"><i class="fas fa-question opacity-20"></i></div>
+                            <div id="slot-chest" class="item-slot" title="Torso"><i class="fas fa-question opacity-20"></i></div>
+                            <div id="slot-special" class="item-slot" title="Relíquia"><i class="fas fa-question opacity-20"></i></div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs font-bold"><span>FORÇA (Matemática)</span><span id="stat-mat" class="text-blue-400">10</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span>INTELIGÊNCIA (Português)</span><span id="stat-por" class="text-pink-400">10</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span>RESISTÊNCIA (Ciências)</span><span id="stat-cie" class="text-green-400">10</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Crônicas e História -->
+                    <div class="lg:col-span-2 glass p-8 rounded-[40px] flex flex-col">
+                        <h3 class="text-2xl font-black mb-6 flex items-center gap-3 text-pink-500">
+                            <i class="fas fa-scroll"></i> CRÔNICAS DO HERÓI
+                        </h3>
+                        <div id="storyLogs" class="space-y-6 flex-1 overflow-y-auto pr-4 text-slate-400 leading-relaxed italic">
+                            <!-- História gerada aqui -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. VIDEOAULAS -->
+            <section id="aulas" class="tab-content">
+                <h2 class="text-3xl font-black mb-8 italic uppercase tracking-tighter">Central de Vídeos</h2>
+                <div id="lessonsGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+            </section>
+
+            <!-- 4. JOGOS (HIERÁRQUICO) -->
+            <section id="jogos" class="tab-content">
+                <div id="gamesHeader">
+                    <h2 class="text-4xl font-black italic mb-2">ARENA DE DESAFIOS</h2>
+                    <p class="text-slate-400 mb-10">Escolha uma matéria para jogar e ganhar itens épicos.</p>
+                </div>
+                <div id="gamesDisplay" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // ESTADO DO JOGO
+        let state = {
+            heroType: '',
+            heroClass: '',
+            avatar: '',
+            xp: 0,
+            level: 1,
+            gold: 100,
+            subjects: [
+                { name: 'Informática Básica', color: 'bg-blue-600', icon: 'fa-calculator', prog: 10 },
+                { name: 'Logica de programação', color: 'bg-pink-600', icon: 'fa-pen-nib', prog: 15 },
+                { name: 'Introdução a Interligência Artifgicial', color: 'bg-green-600', icon: 'fa-flask', prog: 5 },
+                { name: 'Gestão de StartUp  ', color: 'bg-orange-600', icon: 'fa-monument', prog: 0 },
+                { name: 'Arquitetura e Manutenção de Computadores', color: 'bg-emerald-600', icon: 'fa-globe-americas', prog: 0 },
+                { name: 'Inglês', color: 'bg-indigo-600', icon: 'fa-language', prog: 0 },
+                { name: 'Programação WEB', color: 'bg-cyan-600', icon: 'fa-atom', prog: 0 },
+                { name: 'Análise e Projeto de Sistemas', color: 'bg-yellow-600', icon: 'fa-vials', prog: 0 },
+                { name: 'Banco de Dados', color: 'bg-rose-600', icon: 'fa-dna', prog: 0 },
+                { name: 'Design de Interfaces e Usabilidade', color: 'bg-purple-600', icon: 'fa-brain', prog: 0 },
+                { name: 'Programação Orientado a Objetos', color: 'bg-rose-600', icon: 'fa-dna', prog: 0 },
+                { name: 'Sistemas Embarcados', color: 'bg-purple-600', icon: 'fa-brain', prog: 0 },
+                { name: 'Redes de Computadores', color: 'bg-rose-600', icon: 'fa-dna', prog: 0 },
+                { name: 'Segurança de Sistemas de Informação', color: 'bg-purple-600', icon: 'fa-brain', prog: 0 },
+                { name: 'Qualidade e Testes de Softwares', color: 'bg-rose-600', icon: 'fa-dna', prog: 0 },
+                { name: 'Desenvolvimento de Aplicações para Móveis', color: 'bg-purple-600', icon: 'fa-brain', prog: 0 }
+
+            ],
+            history: [
+                "Você desperta em um mundo onde o conhecimento foi fragmentado. Como um novo herói, sua missão é recuperar as peças do saber."
+            ],
+            inventory: {
+                head: false, weapon: false, chest: false, special: false
+            }
+        };
+
+        // SELEÇÃO INICIAL
+        function selectHero(type, className, img) {
+            state.heroType = type;
+            state.heroClass = className;
+            state.avatar = img;
+            
+            document.getElementById('selectionScreen').style.display = 'none';
+            document.getElementById('mainApp').classList.remove('hidden');
+            
+            document.getElementById('heroAvatarImg').src = img;
+            document.getElementById('heroNameDisplay').innerText = type + " " + className;
+            
+            showTab('dashboard');
+            updateUI();
+        }
+
+        // NAVEGAÇÃO
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('bg-purple-600/20', 'text-white', 'border-l-4', 'border-purple-500'));
+            
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('bg-purple-600/20', 'text-white', 'border-l-4', 'border-purple-500');
+
+            if(tabId === 'dashboard') renderDashboard();
+            if(tabId === 'personagem') renderHeroScreen();
+            if(tabId === 'aulas') renderLessons();
+            if(tabId === 'jogos') renderGameSubjects();
+        }
+
+        // RENDERIZADORES
+        function renderDashboard() {
+    const grid = document.getElementById('dashboardGrid');
+
+    grid.innerHTML = state.subjects.map((s, idx) => `
+        <div 
+            class="glass p-6 rounded-3xl border-2 border-transparent hover:border-purple-500 transition cursor-pointer"
+            onclick="${s.name === 'Logica de programação' 
+                ? "window.location.href='logica.html'" 
+                : `gainXP(200, ${idx})`}"
+        >
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 ${s.color} rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                    <i class="fas ${s.icon}"></i>
+                </div>
+
+                <span class="text-[10px] font-black text-slate-500 uppercase">
+                    Estudar
+                </span>
+            </div>
+
+            <h3 class="font-bold mb-4">${s.name}</h3>
+
+            <div class="flex justify-between text-[10px] mb-1 font-black text-slate-400">
+                <span>PODER</span>
+                <span>${s.prog}%</span>
+            </div>
+
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div 
+                    class="progress-fill h-full" 
+                    style="width: ${s.prog}%"
+                ></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+        function renderHeroScreen() {
+            document.getElementById('heroLevelTag').innerText = "NÍVEL " + state.level;
+            const logBox = document.getElementById('storyLogs');
+            logBox.innerHTML = state.history.map(h => `<p class="border-l-2 border-purple-500 pl-4 mb-4">"${h}"</p>`).join('');
+            
+            // Atualiza slots visuais
+            if(state.inventory.weapon) document.getElementById('slot-weapon').classList.add('item-active'), document.getElementById('slot-weapon').innerHTML = '<i class="fas fa-sword"></i>';
+            if(state.inventory.head) document.getElementById('slot-head').classList.add('item-active'), document.getElementById('slot-head').innerHTML = '<i class="fas fa-hat-wizard"></i>';
+        }
+
+        function renderGameSubjects() {
+            const grid = document.getElementById('gamesDisplay');
+            grid.innerHTML = state.subjects.map(s => `
+                <div class="cursor-pointer bg-gradient-to-br ${s.color} p-8 rounded-[30px] shadow-xl relative overflow-hidden group transition-all hover:scale-105">
+                    <i class="fas ${s.icon} absolute -right-4 -bottom-4 text-7xl opacity-20"></i>
+                    <h3 class="text-2xl font-black italic uppercase">${s.name}</h3>
+                    <p class="text-white/70 text-sm mb-4">Modos: Dominó, RPG, Cartas, Quiz</p>
+                    <button class="bg-white/20 px-4 py-1 rounded-full text-[10px] font-black uppercase">Entrar na Arena</button>
+                </div>
+            `).join('');
+        }
+
+        function renderLessons() {
+            const grid = document.getElementById('lessonsGrid');
+            grid.innerHTML = state.subjects.map(s => `
+                <div class="glass p-4 rounded-2xl text-center cursor-pointer hover:bg-slate-800 transition">
+                    <div class="w-10 h-10 ${s.color} rounded-xl mx-auto mb-3 flex items-center justify-center"><i class="fas ${s.icon}"></i></div>
+                    <p class="text-[10px] font-bold uppercase">${s.name}</p>
+                </div>
+            `).join('');
+        }
+
+        // LÓGICA DE PROGRESSÃO
+        function gainXP(amount, subIdx) {
+            state.xp += amount;
+            state.gold += 10;
+            state.subjects[subIdx].prog = Math.min(100, state.subjects[subIdx].prog + 10);
+            
+            if(state.xp >= 1000) levelUp();
+            updateUI();
+            renderDashboard();
+        }
+
+        function levelUp() {
+            state.level++;
+            state.xp = 0;
+            
+            let storyStep = "";
+            if(state.level === 2) {
+                state.inventory.weapon = true;
+                storyStep = "Ao dominar as primeiras lições, você forjou sua 'Lâmina do Intelecto'. Agora seus ataques contra a ignorância são mais letais.";
+            } else if(state.level === 3) {
+                state.inventory.head = true;
+                storyStep = "Sua mente se expandiu. Você encontrou o 'Elmo da Clareza', permitindo enxergar padrões em problemas complexos.";
+            } else {
+                storyStep = `Você atingiu o nível ${state.level} e sua lenda se espalha pelos reinos do saber.`;
+            }
+            
+            state.history.push(storyStep);
+            alert("⭐ LEVEL UP! Você alcançou o Nível " + state.level);
+        }
+
+        function updateUI() {
+            document.getElementById('sideLevel').innerText = state.level;
+            document.getElementById('sideXP').innerText = state.xp + "/1000";
+            document.getElementById('sideXPBar').style.width = (state.xp / 10).toFixed(0) + "%";
+            document.getElementById('goldCount').innerText = state.gold;
+        }
+
+    </script>   
+</body>
+</html>
