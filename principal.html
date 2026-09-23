@@ -174,7 +174,7 @@
                 { name: 'Informática Básica', color: 'bg-blue-600', icon: 'fa-calculator', prog: 10 },
                 { name: 'Logica de programação', color: 'bg-pink-600', icon: 'fa-pen-nib', prog: 15 },
                 { name: 'Introdução a Interligência Artifgicial', color: 'bg-green-600', icon: 'fa-flask', prog: 5 },
-                { name: 'Gestão de StartUp  ', color: 'bg-orange-600', icon: 'fa-monument', prog: 0 },
+                { name: 'Gestão de StartUp', color: 'bg-orange-600', icon: 'fa-monument', prog: 0 },
                 { name: 'Arquitetura e Manutenção de Computadores', color: 'bg-emerald-600', icon: 'fa-globe-americas', prog: 0 },
                 { name: 'Inglês', color: 'bg-indigo-600', icon: 'fa-language', prog: 0 },
                 { name: 'Programação WEB', color: 'bg-cyan-600', icon: 'fa-atom', prog: 0 },
@@ -231,38 +231,64 @@
         function renderDashboard() {
     const grid = document.getElementById('dashboardGrid');
 
-    grid.innerHTML = state.subjects.map((s, idx) => `
-        <div 
-            class="glass p-6 rounded-3xl border-2 border-transparent hover:border-purple-500 transition cursor-pointer"
-            onclick="${s.name === 'Logica de programação' 
-                ? "window.location.href='logica.html'" 
-                : `gainXP(200, ${idx})`}"
-        >
-            <div class="flex justify-between items-start mb-4">
-                <div class="w-12 h-12 ${s.color} rounded-2xl flex items-center justify-center text-xl shadow-lg">
-                    <i class="fas ${s.icon}"></i>
+    grid.innerHTML = state.subjects.map((s, idx) => {
+
+        let acao = `gainXP(200, ${idx})`;
+
+        if (s.name === 'Informática Básica') {
+            acao = `window.location.href='informatica.html'`;
+        }
+
+        if (s.name === 'Logica de programação') {
+            acao = `window.location.href='logica.html'`;
+        }
+
+        if (s.name === 'Introdução a Interligência Artifgicial') {
+            acao = `window.location.href='ia.html'`;
+        }
+
+         if (s.name === 'Gestão de StartUp') {
+            acao = `window.location.href='startup.html'`;
+        }
+
+        return `
+            <div 
+                class="glass p-6 rounded-3xl border-2 border-transparent hover:border-purple-500 transition cursor-pointer"
+                onclick="${acao}"
+            >
+
+                <div class="flex justify-between items-start mb-4">
+
+                    <div class="w-12 h-12 ${s.color} rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                        <i class="fas ${s.icon}"></i>
+                    </div>
+
+                    <span class="text-[10px] font-black text-slate-500 uppercase">
+                        Estudar
+                    </span>
+
                 </div>
 
-                <span class="text-[10px] font-black text-slate-500 uppercase">
-                    Estudar
-                </span>
-            </div>
+                <h3 class="font-bold mb-4">
+                    ${s.name}
+                </h3>
 
-            <h3 class="font-bold mb-4">${s.name}</h3>
+                <div class="flex justify-between text-[10px] mb-1 font-black text-slate-400">
+                    <span>PODER</span>
+                    <span>${s.prog}%</span>
+                </div>
 
-            <div class="flex justify-between text-[10px] mb-1 font-black text-slate-400">
-                <span>PODER</span>
-                <span>${s.prog}%</span>
-            </div>
+                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div 
+                        class="progress-fill h-full" 
+                        style="width: ${s.prog}%">
+                    </div>
+                </div>
 
-            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <div 
-                    class="progress-fill h-full" 
-                    style="width: ${s.prog}%"
-                ></div>
             </div>
-        </div>
-    `).join('');
+        `;
+
+    }).join('');
 }
 
         function renderHeroScreen() {

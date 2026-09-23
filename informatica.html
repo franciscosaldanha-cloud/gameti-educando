@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Informática Básica - GameTI Educando</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+        body {
+            background:
+                radial-gradient(circle at top left, #172554 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #3b0764 0%, transparent 35%),
+                #020617;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: 0.3s;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56,189,248,0.5);
+            box-shadow: 0 10px 30px rgba(56,189,248,0.12);
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen">
+
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-full w-64 glass hidden md:flex flex-col p-5 z-50">
+
+    <div class="mb-8">
+        <h1 class="text-2xl font-bold">
+            <span class="gradient-text">GameTI Educando</span>
+        </h1>
+
+        <p class="text-gray-400 text-sm">
+            Educando
+        </p>
+    </div>
+
+    <nav class="space-y-3">
+
+        <a href="index.html"
+           class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition">
+            <i class="fa-solid fa-house"></i>
+            Início
+        </a>
+
+        <a href="#conteudo"
+           class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition">
+            <i class="fa-solid fa-book"></i>
+            Conteúdo
+        </a>
+
+        <a href="#jogos"
+           class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition">
+            <i class="fa-solid fa-gamepad"></i>
+            Jogos
+        </a>
+
+        <a href="#quiz"
+           class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition">
+            <i class="fa-solid fa-circle-question"></i>
+            Quiz
+        </a>
+
+        <a href="#desafio"
+           class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition">
+            <i class="fa-solid fa-trophy"></i>
+            Desafios
+        </a>
+
+    </nav>
+
+    <div class="mt-auto">
+
+    <a href="principal.html#dashboard"
+        class="flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-500 p-3 rounded-xl transition">
+        <i class="fa-solid fa-arrow-left"></i>
+        Voltar ao Painel
+    </a>
+
+    </div>
+
+</aside>
+
+
+<!-- CONTEÚDO -->
+<main class="md:ml-64 p-5 md:p-10">
+
+    <!-- CABEÇALHO -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 mb-8">
+
+        <div>
+            <p class="text-sky-400 font-semibold">
+                DISCIPLINA
+            </p>
+
+            <h2 class="text-4xl font-bold mt-1">
+                Informática <span class="gradient-text">Básica</span>
+            </h2>
+
+            <p class="text-gray-400 mt-2">
+                Aprenda os fundamentos do mundo da informática através de desafios e aventuras.
+            </p>
+        </div>
+
+        <div class="glass rounded-2xl p-4 min-w-[180px]">
+
+            <div class="flex justify-between text-sm mb-2">
+                <span class="text-gray-400">XP da disciplina</span>
+                <span id="xpDisplay" class="font-bold text-sky-400">0 XP</span>
+            </div>
+
+            <div class="w-full bg-gray-800 rounded-full h-3">
+
+                <div
+                    id="xpBar"
+                    class="bg-gradient-to-r from-sky-500 to-purple-500 h-3 rounded-full transition-all"
+                    style="width: 0%">
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="glass rounded-3xl p-8 mb-10 relative overflow-hidden">
+
+        <div class="absolute -right-10 -top-10 text-[180px] text-sky-500/10">
+            <i class="fa-solid fa-computer"></i>
+        </div>
+
+        <div class="relative z-10 max-w-3xl">
+
+            <span class="inline-block bg-sky-500/20 text-sky-300 px-4 py-2 rounded-full text-sm mb-4">
+                <i class="fa-solid fa-star mr-2"></i>
+                A Jornada do Conhecimento
+            </span>
+
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">
+                O Reino da <span class="gradient-text">Informática</span>
+            </h3>
+
+            <p class="text-gray-300 leading-relaxed">
+                Prepare-se para descobrir como os computadores funcionam,
+                conhecer seus principais componentes, entender sistemas
+                operacionais, arquivos, internet e segurança digital.
+            </p>
+
+            <button
+                onclick="scrollToSection('conteudo')"
+                class="mt-6 bg-sky-600 hover:bg-sky-500 px-6 py-3 rounded-xl font-semibold transition">
+                Começar Jornada
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTEÚDO -->
+    <section id="conteudo" class="mb-12">
+
+        <div class="mb-6">
+
+            <p class="text-sky-400 font-semibold">
+                MISSÕES DE APRENDIZADO
+            </p>
+
+            <h3 class="text-3xl font-bold">
+                Trilhas de Informática
+            </h3>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+
+            <!-- MÓDULO 1 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-computer text-2xl text-sky-400"></i>
+                </div>
+
+                <span class="text-xs text-sky-400 font-bold">
+                    MISSÃO 01
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Conhecendo o Computador
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Descubra o que é um computador e conheça seus principais componentes.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-sky-600/20 hover:bg-sky-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+
+            <!-- MÓDULO 2 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-microchip text-2xl text-purple-400"></i>
+                </div>
+
+                <span class="text-xs text-purple-400 font-bold">
+                    MISSÃO 02
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Hardware e Software
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Entenda a diferença entre hardware e software e descubra a função de cada um.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-purple-600/20 hover:bg-purple-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+
+            <!-- MÓDULO 3 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-pink-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-folder-open text-2xl text-pink-400"></i>
+                </div>
+
+                <span class="text-xs text-pink-400 font-bold">
+                    MISSÃO 03
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Arquivos e Pastas
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Aprenda a organizar arquivos, criar pastas e entender diferentes extensões.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-pink-600/20 hover:bg-pink-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+
+            <!-- MÓDULO 4 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-window-maximize text-2xl text-green-400"></i>
+                </div>
+
+                <span class="text-xs text-green-400 font-bold">
+                    MISSÃO 04
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Sistemas Operacionais
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Conheça o papel dos sistemas operacionais e suas principais funções.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-green-600/20 hover:bg-green-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+
+            <!-- MÓDULO 5 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-globe text-2xl text-yellow-400"></i>
+                </div>
+
+                <span class="text-xs text-yellow-400 font-bold">
+                    MISSÃO 05
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Internet
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Entenda os conceitos básicos da internet, navegadores, sites e comunicação online.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-yellow-600/20 hover:bg-yellow-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+
+            <!-- MÓDULO 6 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <div class="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-shield-halved text-2xl text-red-400"></i>
+                </div>
+
+                <span class="text-xs text-red-400 font-bold">
+                    MISSÃO 06
+                </span>
+
+                <h4 class="text-xl font-bold mt-2">
+                    Segurança Digital
+                </h4>
+
+                <p class="text-gray-400 mt-3">
+                    Aprenda boas práticas para proteger seus dados, contas e informações na internet.
+                </p>
+
+                <button
+                    onclick="completeMission(50)"
+                    class="mt-5 w-full bg-red-600/20 hover:bg-red-600 p-3 rounded-xl transition">
+                    Estudar módulo
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JOGOS -->
+    <section id="jogos" class="mb-12">
+
+        <p class="text-purple-400 font-semibold">
+            ÁREA DE TREINAMENTO
+        </p>
+
+        <h3 class="text-3xl font-bold mb-6">
+            Jogos de Informática
+        </h3>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+
+            <!-- JOGO 1 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <i class="fa-solid fa-puzzle-piece text-4xl text-sky-400"></i>
+
+                <h4 class="text-xl font-bold mt-4">
+                    Monte o Computador
+                </h4>
+
+                <p class="text-gray-400 mt-2">
+                    Identifique os componentes corretos de um computador.
+                </p>
+
+                <button
+                    onclick="startGame('Monte o Computador', 100)"
+                    class="mt-5 bg-sky-600 hover:bg-sky-500 px-5 py-3 rounded-xl">
+                    Jogar
+                </button>
+
+            </div>
+
+
+            <!-- JOGO 2 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <i class="fa-solid fa-memory text-4xl text-purple-400"></i>
+
+                <h4 class="text-xl font-bold mt-4">
+                    Hardware ou Software?
+                </h4>
+
+                <p class="text-gray-400 mt-2">
+                    Teste seus conhecimentos classificando diferentes elementos.
+                </p>
+
+                <button
+                    onclick="startGame('Hardware ou Software?', 100)"
+                    class="mt-5 bg-purple-600 hover:bg-purple-500 px-5 py-3 rounded-xl">
+                    Jogar
+                </button>
+
+            </div>
+
+
+            <!-- JOGO 3 -->
+            <div class="glass rounded-2xl p-6 card-hover">
+
+                <i class="fa-solid fa-folder-tree text-4xl text-pink-400"></i>
+
+                <h4 class="text-xl font-bold mt-4">
+                    Organizador Digital
+                </h4>
+
+                <p class="text-gray-400 mt-2">
+                    Organize arquivos nas pastas corretas.
+                </p>
+
+                <button
+                    onclick="startGame('Organizador Digital', 100)"
+                    class="mt-5 bg-pink-600 hover:bg-pink-500 px-5 py-3 rounded-xl">
+                    Jogar
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+    <section id="quiz" class="mb-12">
+
+        <p class="text-yellow-400 font-semibold">
+            TESTE SEUS CONHECIMENTOS
+        </p>
+
+        <h3 class="text-3xl font-bold mb-6">
+            Quiz de Informática Básica
+        </h3>
+
+
+        <div class="glass rounded-2xl p-6 md:p-8">
+
+            <p class="text-sm text-gray-400 mb-3">
+                PERGUNTA
+                <span id="questionNumber">1</span>/5
+            </p>
+
+            <h4 id="question" class="text-xl md:text-2xl font-bold mb-6">
+                Qual dos itens abaixo é um dispositivo de entrada?
+            </h4>
+
+            <div id="answers" class="grid gap-3">
+
+                <button
+                    onclick="answerQuestion(this, true)"
+                    class="answer bg-white/5 hover:bg-white/10 p-4 rounded-xl text-left transition">
+                    Teclado
+                </button>
+
+                <button
+                    onclick="answerQuestion(this, false)"
+                    class="answer bg-white/5 hover:bg-white/10 p-4 rounded-xl text-left transition">
+                    Monitor
+                </button>
+
+                <button
+                    onclick="answerQuestion(this, false)"
+                    class="answer bg-white/5 hover:bg-white/10 p-4 rounded-xl text-left transition">
+                    Impressora
+                </button>
+
+                <button
+                    onclick="answerQuestion(this, false)"
+                    class="answer bg-white/5 hover:bg-white/10 p-4 rounded-xl text-left transition">
+                    Caixa de som
+                </button>
+
+            </div>
+
+            <p id="quizResult" class="mt-5 font-semibold"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DESAFIO -->
+    <section id="desafio" class="mb-12">
+
+        <p class="text-red-400 font-semibold">
+            DESAFIO FINAL
+        </p>
+
+        <h3 class="text-3xl font-bold mb-6">
+            Mestre da Informática
+        </h3>
+
+
+        <div class="glass rounded-2xl p-6 md:p-8">
+
+            <div class="flex items-start gap-4">
+
+                <div class="w-14 h-14 shrink-0 rounded-xl bg-red-500/20 flex items-center justify-center">
+                    <i class="fa-solid fa-trophy text-red-400 text-2xl"></i>
+                </div>
+
+                <div>
+
+                    <h4 class="text-xl font-bold">
+                        Desafio de Segurança Digital
+                    </h4>
+
+                    <p class="text-gray-400 mt-2">
+                        Escreva três atitudes que você considera importantes
+                        para manter uma conta segura na internet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <textarea
+                id="challengeAnswer"
+                class="w-full mt-6 bg-black/30 border border-white/10 rounded-xl p-4 min-h-[140px] outline-none focus:border-sky-500"
+                placeholder="Digite sua resposta aqui..."></textarea>
+
+
+            <button
+                onclick="finishChallenge()"
+                class="mt-4 bg-gradient-to-r from-sky-600 to-purple-600 hover:opacity-90 px-6 py-3 rounded-xl font-semibold">
+                Concluir Desafio
+            </button>
+
+            <p id="challengeResult" class="mt-4"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="text-center text-gray-500 py-8">
+
+        <p>
+            GameTI Educando
+        </p>
+
+        <p class="text-sm mt-1">
+            Aprender também pode ser uma aventura.
+        </p>
+
+    </footer>
+
+</main>
+
+
+<script>
+
+    /* ============================
+       SISTEMA DE XP
+    ============================ */
+
+    let xp = Number(localStorage.getItem("informaticaXP")) || 0;
+
+    const xpPorNivel = 500;
+
+
+    function updateXP() {
+
+        document.getElementById("xpDisplay").textContent =
+            xp + " XP";
+
+        let porcentagem =
+            ((xp % xpPorNivel) / xpPorNivel) * 100;
+
+        document.getElementById("xpBar").style.width =
+            porcentagem + "%";
+    }
+
+
+    function addXP(valor) {
+
+        xp += valor;
+
+        localStorage.setItem(
+            "informaticaXP",
+            xp
+        );
+
+        updateXP();
+
+    }
+
+
+    function completeMission(valor) {
+
+        addXP(valor);
+
+        alert(
+            "🎉 Missão concluída!\n\nVocê ganhou " +
+            valor +
+            " XP!"
+        );
+
+    }
+
+
+    /* ============================
+       JOGOS
+    ============================ */
+
+    function startGame(nome, recompensa) {
+
+        let jogar = confirm(
+            "🎮 " + nome +
+            "\n\nDeseja concluir este treinamento e ganhar " +
+            recompensa +
+            " XP?"
+        );
+
+        if (jogar) {
+
+            addXP(recompensa);
+
+            alert(
+                "🏆 Parabéns!\n\nVocê concluiu o jogo e ganhou " +
+                recompensa +
+                " XP!"
+            );
+
+        }
+
+    }
+
+
+    /* ============================
+       QUIZ
+    ============================ */
+
+    const questions = [
+
+        {
+            question:
+                "Qual dos itens abaixo é um dispositivo de entrada?",
+
+            answers: [
+                ["Teclado", true],
+                ["Monitor", false],
+                ["Impressora", false],
+                ["Caixa de som", false]
+            ]
+        },
+
+        {
+            question:
+                "Qual alternativa representa um software?",
+
+            answers: [
+                ["Teclado", false],
+                ["Mouse", false],
+                ["Sistema operacional", true],
+                ["Monitor", false]
+            ]
+        },
+
+        {
+            question:
+                "Qual dispositivo é utilizado para armazenar arquivos?",
+
+            answers: [
+                ["HD/SSD", true],
+                ["Monitor", false],
+                ["Teclado", false],
+                ["Microfone", false]
+            ]
+        },
+
+        {
+            question:
+                "Qual programa é utilizado para acessar sites na internet?",
+
+            answers: [
+                ["Navegador", true],
+                ["Calculadora", false],
+                ["Bloco de notas", false],
+                ["Gerenciador de arquivos", false]
+            ]
+        },
+
+        {
+            question:
+                "Qual atitude ajuda a proteger uma conta online?",
+
+            answers: [
+                ["Compartilhar a senha", false],
+                ["Usar uma senha forte", true],
+                ["Usar a mesma senha em tudo", false],
+                ["Clicar em qualquer link recebido", false]
+            ]
+        }
+
+    ];
+
+
+    let currentQuestion = 0;
+
+
+    function loadQuestion() {
+
+        if (currentQuestion >= questions.length) {
+
+            document.getElementById("question").textContent =
+                "🎉 Quiz concluído!";
+
+            document.getElementById("answers").innerHTML = "";
+
+            document.getElementById("quizResult").textContent =
+                "Você concluiu o Quiz de Informática Básica e ganhou 100 XP!";
+
+            addXP(100);
+
+            return;
+        }
+
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("questionNumber").textContent =
+            currentQuestion + 1;
+
+        document.getElementById("question").textContent =
+            q.question;
+
+
+        const container =
+            document.getElementById("answers");
+
+        container.innerHTML = "";
+
+
+        q.answers.forEach(function(answer) {
+
+            const button =
+                document.createElement("button");
+
+            button.textContent =
+                answer[0];
+
+            button.className =
+                "answer bg-white/5 hover:bg-white/10 p-4 rounded-xl text-left transition";
+
+            button.onclick =
+                function() {
+
+                    answerQuestion(
+                        button,
+                        answer[1]
+                    );
+
+                };
+
+            container.appendChild(button);
+
+        });
+
+    }
+
+
+    function answerQuestion(button, correct) {
+
+        const buttons =
+            document.querySelectorAll(".answer");
+
+        buttons.forEach(function(btn) {
+
+            btn.disabled = true;
+
+        });
+
+
+        if (correct) {
+
+            button.classList.add(
+                "bg-green-600/40"
+            );
+
+            document.getElementById("quizResult").textContent =
+                "✅ Resposta correta! +20 XP";
+
+            addXP(20);
+
+        } else {
+
+            button.classList.add(
+                "bg-red-600/40"
+            );
+
+            document.getElementById("quizResult").textContent =
+                "❌ Resposta incorreta.";
+
+        }
+
+
+        setTimeout(function() {
+
+            currentQuestion++;
+
+            document.getElementById("quizResult").textContent = "";
+
+            loadQuestion();
+
+        }, 1200);
+
+    }
+
+
+    /* ============================
+       DESAFIO
+    ============================ */
+
+    function finishChallenge() {
+
+        const answer =
+            document.getElementById("challengeAnswer").value.trim();
+
+
+        if (answer.length < 10) {
+
+            document.getElementById("challengeResult").textContent =
+                "⚠️ Escreva uma resposta um pouco mais completa.";
+
+            return;
+
+        }
+
+
+        addXP(150);
+
+
+        document.getElementById("challengeResult").textContent =
+            "🏆 Desafio concluído! Você ganhou 150 XP.";
+
+    }
+
+
+    /* ============================
+       NAVEGAÇÃO
+    ============================ */
+
+    function scrollToSection(id) {
+
+        document.getElementById(id)
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* ============================
+       INICIALIZAÇÃO
+    ============================ */
+
+    updateXP();
+
+    loadQuestion();
+
+</script>
+
+</body>
+</html>

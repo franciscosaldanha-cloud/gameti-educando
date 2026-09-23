@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Introdução à Inteligência Artificial - GameTI Educando</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #312e81 0%,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    #164e63 0%,
+                    transparent 35%
+                ),
+
+                #020617;
+
+        }
+
+
+        .glass {
+
+            background: rgba(15, 23, 42, 0.76);
+
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+        }
+
+
+        .gradient-text {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #22d3ee,
+                    #818cf8,
+                    #c084fc
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+        .card-hover {
+
+            transition: 0.3s;
+
+        }
+
+
+        .card-hover:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(129,140,248,0.55);
+
+            box-shadow:
+                0 10px 30px
+                rgba(99,102,241,0.15);
+
+        }
+
+
+        .neon-border {
+
+            box-shadow:
+                0 0 25px
+                rgba(99,102,241,0.10);
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="text-white min-h-screen">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="
+        fixed
+        left-0
+        top-0
+        h-full
+        w-64
+        glass
+        hidden
+        md:flex
+        flex-col
+        p-5
+        z-50
+    "
+>
+
+    <div class="mb-8">
+
+        <h1 class="text-2xl font-bold">
+
+            <span class="gradient-text">
+                GameTI
+            </span>
+
+        </h1>
+
+        <p class="text-gray-400 text-sm">
+            Educando
+        </p>
+
+    </div>
+
+
+    <nav class="space-y-3">
+
+
+        <a
+            href="index.html"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            Início
+
+        </a>
+
+
+        <a
+            href="#conteudo"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-brain"></i>
+
+            Conteúdo
+
+        </a>
+
+
+        <a
+            href="#jogos"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-gamepad"></i>
+
+            Jogos
+
+        </a>
+
+
+        <a
+            href="#quiz"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-circle-question"></i>
+
+            Quiz
+
+        </a>
+
+
+        <a
+            href="#desafio"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-trophy"></i>
+
+            Desafios
+
+        </a>
+
+    </nav>
+
+
+    <div class="mt-auto">
+
+        <a
+            href="principal.html#dashboard"
+            class="
+                flex
+                items-center
+                justify-center
+                gap-2
+                bg-indigo-600
+                hover:bg-indigo-500
+                p-3
+                rounded-xl
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Voltar ao Painel
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     CONTEÚDO PRINCIPAL
+===================================================== -->
+
+<main class="md:ml-64 p-5 md:p-10">
+
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header
+    class="
+        flex
+        flex-col
+        md:flex-row
+        justify-between
+        items-start
+        md:items-center
+        gap-5
+        mb-8
+    "
+>
+
+
+    <div>
+
+        <p class="text-indigo-400 font-semibold">
+
+            DISCIPLINA
+
+        </p>
+
+
+        <h2 class="text-4xl font-bold mt-1">
+
+            Introdução à
+            <span class="gradient-text">
+                Inteligência Artificial
+            </span>
+
+        </h2>
+
+
+        <p class="text-gray-400 mt-2">
+
+            Descubra os fundamentos da Inteligência Artificial
+            através de uma jornada de desafios e descobertas.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- XP -->
+
+    <div class="glass rounded-2xl p-4 min-w-[200px]">
+
+        <div
+            class="
+                flex
+                justify-between
+                text-sm
+                mb-2
+            "
+        >
+
+            <span class="text-gray-400">
+
+                XP da disciplina
+
+            </span>
+
+
+            <span
+                id="xpDisplay"
+                class="font-bold text-indigo-400"
+            >
+
+                0 XP
+
+            </span>
+
+        </div>
+
+
+        <div
+            class="
+                w-full
+                bg-gray-800
+                rounded-full
+                h-3
+            "
+        >
+
+            <div
+                id="xpBar"
+                class="
+                    bg-gradient-to-r
+                    from-cyan-500
+                    to-purple-500
+                    h-3
+                    rounded-full
+                    transition-all
+                "
+                style="width:0%"
+            ></div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="
+        glass
+        rounded-3xl
+        p-8
+        mb-10
+        relative
+        overflow-hidden
+        neon-border
+    "
+>
+
+
+    <div
+        class="
+            absolute
+            -right-10
+            -top-10
+            text-[180px]
+            text-indigo-500/10
+        "
+    >
+
+        <i class="fa-solid fa-brain"></i>
+
+    </div>
+
+
+    <div class="relative z-10 max-w-3xl">
+
+
+        <span
+            class="
+                inline-block
+                bg-indigo-500/20
+                text-indigo-300
+                px-4
+                py-2
+                rounded-full
+                text-sm
+                mb-4
+            "
+        >
+
+            <i class="fa-solid fa-robot mr-2"></i>
+
+            Nova Jornada
+
+        </span>
+
+
+        <h3 class="text-3xl md:text-4xl font-bold mb-4">
+
+            O Despertar da
+            <span class="gradient-text">
+                Inteligência
+            </span>
+
+        </h3>
+
+
+        <p class="text-gray-300 leading-relaxed">
+
+            Você está prestes a entrar no mundo da Inteligência
+            Artificial. Nesta jornada, você descobrirá conceitos,
+            aplicações e desafios relacionados às tecnologias
+            inteligentes.
+
+        </p>
+
+
+        <button
+            onclick="scrollToSection('conteudo')"
+            class="
+                mt-6
+                bg-indigo-600
+                hover:bg-indigo-500
+                px-6
+                py-3
+                rounded-xl
+                font-semibold
+                transition
+            "
+        >
+
+            Começar Jornada
+
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<section
+    id="conteudo"
+    class="mb-12"
+>
+
+
+    <div class="mb-6">
+
+        <p class="text-indigo-400 font-semibold">
+
+            MISSÕES DE APRENDIZADO
+
+        </p>
+
+
+        <h3 class="text-3xl font-bold">
+
+            Trilha da Inteligência Artificial
+
+        </h3>
+
+    </div>
+
+
+
+    <div
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            gap-5
+        "
+    >
+
+
+        <!-- MÓDULO 1 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-cyan-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-robot
+                        text-2xl
+                        text-cyan-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-cyan-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 01
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                O que é Inteligência Artificial?
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Conheça o conceito de Inteligência Artificial
+                e entenda por que ela está presente em
+                diferentes áreas da sociedade.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-cyan-600/20
+                    hover:bg-cyan-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 2 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-purple-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-clock-rotate-left
+                        text-2xl
+                        text-purple-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-purple-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 02
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                História da IA
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Conheça alguns dos principais momentos que
+                contribuíram para o desenvolvimento da
+                Inteligência Artificial.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-purple-600/20
+                    hover:bg-purple-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 3 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-blue-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-gears
+                        text-2xl
+                        text-blue-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-blue-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 03
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Aprendizado de Máquina
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Descubra o conceito de Machine Learning
+                e como sistemas podem utilizar dados
+                para identificar padrões.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-blue-600/20
+                    hover:bg-blue-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 4 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-pink-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-network-wired
+                        text-2xl
+                        text-pink-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-pink-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 04
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Redes Neurais
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Conheça de forma introdutória o conceito
+                de redes neurais artificiais e sua relação
+                com sistemas inteligentes.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-pink-600/20
+                    hover:bg-pink-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 5 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-green-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-wand-magic-sparkles
+                        text-2xl
+                        text-green-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-green-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 05
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Inteligência Artificial Generativa
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Conheça sistemas capazes de gerar conteúdos
+                como textos, imagens, códigos e outros tipos
+                de informação.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-green-600/20
+                    hover:bg-green-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 6 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-yellow-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-scale-balanced
+                        text-2xl
+                        text-yellow-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-yellow-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 06
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Ética e Responsabilidade
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Reflita sobre o uso responsável das tecnologias
+                de Inteligência Artificial e seus impactos.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-yellow-600/20
+                    hover:bg-yellow-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     JOGOS
+===================================================== -->
+
+<section
+    id="jogos"
+    class="mb-12"
+>
+
+
+    <p class="text-purple-400 font-semibold">
+
+        ÁREA DE TREINAMENTO
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Jogos de Inteligência Artificial
+
+    </h3>
+
+
+
+    <div
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-3
+            gap-5
+        "
+    >
+
+
+        <!-- JOGO 1 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-user-secret
+                    text-4xl
+                    text-cyan-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Humano ou IA?
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Analise situações e tente identificar
+                se foram produzidas por uma pessoa
+                ou por uma inteligência artificial.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Humano ou IA?',100)"
+                class="
+                    mt-5
+                    bg-cyan-600
+                    hover:bg-cyan-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- JOGO 2 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-brain
+                    text-4xl
+                    text-purple-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Desafio do Algoritmo
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Resolva desafios envolvendo lógica,
+                dados e tomada de decisões.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Desafio do Algoritmo',100)"
+                class="
+                    mt-5
+                    bg-purple-600
+                    hover:bg-purple-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- JOGO 3 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-magnifying-glass
+                    text-4xl
+                    text-pink-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Detetive da IA
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Descubra onde a Inteligência Artificial
+                está sendo utilizada em diferentes situações.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Detetive da IA',100)"
+                class="
+                    mt-5
+                    bg-pink-600
+                    hover:bg-pink-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section
+    id="quiz"
+    class="mb-12"
+>
+
+
+    <p class="text-yellow-400 font-semibold">
+
+        TESTE SEUS CONHECIMENTOS
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Quiz de Inteligência Artificial
+
+    </h3>
+
+
+
+    <div class="glass rounded-2xl p-6 md:p-8">
+
+
+        <p class="text-sm text-gray-400 mb-3">
+
+            PERGUNTA
+
+            <span id="questionNumber">
+                1
+            </span>
+
+            /5
+
+        </p>
+
+
+        <h4
+            id="question"
+            class="
+                text-xl
+                md:text-2xl
+                font-bold
+                mb-6
+            "
+        >
+
+            O que significa a sigla IA?
+
+        </h4>
+
+
+        <div
+            id="answers"
+            class="grid gap-3"
+        >
+
+        </div>
+
+
+        <p
+            id="quizResult"
+            class="mt-5 font-semibold"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESAFIO
+===================================================== -->
+
+<section
+    id="desafio"
+    class="mb-12"
+>
+
+
+    <p class="text-red-400 font-semibold">
+
+        DESAFIO FINAL
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Mestre da Inteligência Artificial
+
+    </h3>
+
+
+
+    <div class="glass rounded-2xl p-6 md:p-8">
+
+
+        <div class="flex items-start gap-4">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    shrink-0
+                    rounded-xl
+                    bg-red-500/20
+                    flex
+                    items-center
+                    justify-center
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-trophy
+                        text-red-400
+                        text-2xl
+                    "
+                ></i>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-xl font-bold">
+
+                    Desafio: IA no cotidiano
+
+                </h4>
+
+
+                <p class="text-gray-400 mt-2">
+
+                    Cite três exemplos de situações do
+                    cotidiano em que você acredita que a
+                    Inteligência Artificial pode ser utilizada.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <textarea
+            id="challengeAnswer"
+            class="
+                w-full
+                mt-6
+                bg-black/30
+                border
+                border-white/10
+                rounded-xl
+                p-4
+                min-h-[140px]
+                outline-none
+                focus:border-indigo-500
+            "
+            placeholder="Digite sua resposta aqui..."
+        ></textarea>
+
+
+
+        <button
+            onclick="finishChallenge()"
+            class="
+                mt-4
+                bg-gradient-to-r
+                from-indigo-600
+                to-purple-600
+                hover:opacity-90
+                px-6
+                py-3
+                rounded-xl
+                font-semibold
+            "
+        >
+
+            Concluir Desafio
+
+        </button>
+
+
+        <p
+            id="challengeResult"
+            class="mt-4"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
+<footer
+    class="
+        text-center
+        text-gray-500
+        py-8
+    "
+>
+
+    <p>
+        GameTI Educando
+    </p>
+
+    <p class="text-sm mt-1">
+
+        Aprender também pode ser uma aventura.
+
+    </p>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SISTEMA DE XP
+===================================================== */
+
+let xp =
+    Number(
+        localStorage.getItem(
+            "iaXP"
+        )
+    ) || 0;
+
+
+const xpPorNivel = 500;
+
+
+
+function updateXP() {
+
+
+    document.getElementById(
+        "xpDisplay"
+    ).textContent =
+        xp + " XP";
+
+
+    let porcentagem =
+        ((xp % xpPorNivel) /
+        xpPorNivel) * 100;
+
+
+    document.getElementById(
+        "xpBar"
+    ).style.width =
+        porcentagem + "%";
+
+}
+
+
+
+function addXP(valor) {
+
+
+    xp += valor;
+
+
+    localStorage.setItem(
+        "iaXP",
+        xp
+    );
+
+
+    updateXP();
+
+}
+
+
+
+/* =====================================================
+   MISSÕES
+===================================================== */
+
+function completeMission(valor) {
+
+
+    addXP(valor);
+
+
+    alert(
+        "🤖 Missão concluída!\n\n" +
+        "Você ganhou " +
+        valor +
+        " XP!"
+    );
+
+}
+
+
+
+/* =====================================================
+   JOGOS
+===================================================== */
+
+function startGame(nome, recompensa) {
+
+
+    let jogar =
+        confirm(
+            "🎮 " +
+            nome +
+            "\n\n" +
+            "Deseja concluir este treinamento " +
+            "e ganhar " +
+            recompensa +
+            " XP?"
+        );
+
+
+    if(jogar) {
+
+
+        addXP(recompensa);
+
+
+        alert(
+            "🏆 Parabéns!\n\n" +
+            "Você concluiu o jogo e ganhou " +
+            recompensa +
+            " XP!"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions = [
+
+
+    {
+
+        question:
+            "O que significa a sigla IA?",
+
+        answers: [
+
+            [
+                "Inteligência Artificial",
+                true
+            ],
+
+            [
+                "Internet Avançada",
+                false
+            ],
+
+            [
+                "Informação Automática",
+                false
+            ],
+
+            [
+                "Interface Artificial",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Qual área está relacionada ao aprendizado de máquinas?",
+
+        answers: [
+
+            [
+                "Machine Learning",
+                true
+            ],
+
+            [
+                "Editoração",
+                false
+            ],
+
+            [
+                "Impressão",
+                false
+            ],
+
+            [
+                "Digitação",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "O que uma IA generativa pode fazer?",
+
+        answers: [
+
+            [
+                "Gerar conteúdos",
+                true
+            ],
+
+            [
+                "Somente desligar computadores",
+                false
+            ],
+
+            [
+                "Somente imprimir documentos",
+                false
+            ],
+
+            [
+                "Somente armazenar arquivos",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Qual elemento é importante para muitos sistemas de IA?",
+
+        answers: [
+
+            [
+                "Dados",
+                true
+            ],
+
+            [
+                "Somente papel",
+                false
+            ],
+
+            [
+                "Somente tinta",
+                false
+            ],
+
+            [
+                "Somente teclado",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Qual atitude é importante ao utilizar IA?",
+
+        answers: [
+
+            [
+                "Usar a tecnologia de forma responsável",
+                true
+            ],
+
+            [
+                "Compartilhar qualquer informação sem verificar",
+                false
+            ],
+
+            [
+                "Ignorar possíveis riscos",
+                false
+            ],
+
+            [
+                "Aceitar todas as respostas automaticamente",
+                false
+            ]
+
+        ]
+
+    }
+
+];
+
+
+
+let currentQuestion = 0;
+
+
+
+function loadQuestion() {
+
+
+    if(
+        currentQuestion >=
+        questions.length
+    ) {
+
+
+        document.getElementById(
+            "question"
+        ).textContent =
+            "🎉 Quiz concluído!";
+
+
+        document.getElementById(
+            "answers"
+        ).innerHTML = "";
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "Você concluiu o Quiz e ganhou 100 XP!";
+
+
+        addXP(100);
+
+
+        return;
+
+    }
+
+
+
+    const q =
+        questions[
+            currentQuestion
+        ];
+
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        currentQuestion + 1;
+
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+
+    const container =
+        document.getElementById(
+            "answers"
+        );
+
+
+    container.innerHTML = "";
+
+
+
+    q.answers.forEach(
+        function(answer) {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.textContent =
+                answer[0];
+
+
+            button.className =
+                `
+                answer
+                bg-white/5
+                hover:bg-white/10
+                p-4
+                rounded-xl
+                text-left
+                transition
+                `;
+
+
+            button.onclick =
+                function() {
+
+
+                    answerQuestion(
+                        button,
+                        answer[1]
+                    );
+
+                };
+
+
+            container.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+
+function answerQuestion(
+    button,
+    correct
+) {
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        function(btn) {
+
+            btn.disabled = true;
+
+        }
+    );
+
+
+
+    if(correct) {
+
+
+        button.classList.add(
+            "bg-green-600/40"
+        );
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "✅ Resposta correta! +20 XP";
+
+
+        addXP(20);
+
+    }
+
+    else {
+
+
+        button.classList.add(
+            "bg-red-600/40"
+        );
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "❌ Resposta incorreta.";
+
+    }
+
+
+
+    setTimeout(
+        function() {
+
+
+            currentQuestion++;
+
+
+            document.getElementById(
+                "quizResult"
+            ).textContent =
+                "";
+
+
+            loadQuestion();
+
+
+        },
+        1200
+    );
+
+}
+
+
+
+/* =====================================================
+   DESAFIO
+===================================================== */
+
+function finishChallenge() {
+
+
+    const answer =
+        document.getElementById(
+            "challengeAnswer"
+        ).value.trim();
+
+
+
+    if(
+        answer.length < 20
+    ) {
+
+
+        document.getElementById(
+            "challengeResult"
+        ).textContent =
+            "⚠️ Escreva uma resposta mais completa.";
+
+
+        return;
+
+    }
+
+
+
+    addXP(150);
+
+
+    document.getElementById(
+        "challengeResult"
+    ).textContent =
+        "🏆 Desafio concluído! Você ganhou 150 XP.";
+
+}
+
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function scrollToSection(id) {
+
+
+    document
+        .getElementById(id)
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+updateXP();
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>

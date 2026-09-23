@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestão de Startup - GameTI Educando</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #431407 0%,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    #581c87 0%,
+                    transparent 35%
+                ),
+
+                #020617;
+
+        }
+
+
+        .glass {
+
+            background: rgba(15, 23, 42, 0.76);
+
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+        }
+
+
+        .gradient-text {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #f97316,
+                    #facc15,
+                    #ec4899
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+        .card-hover {
+
+            transition: 0.3s;
+
+        }
+
+
+        .card-hover:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(249,115,22,0.55);
+
+            box-shadow:
+                0 10px 30px
+                rgba(249,115,22,0.15);
+
+        }
+
+
+        .neon-border {
+
+            box-shadow:
+                0 0 25px
+                rgba(249,115,22,0.10);
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="text-white min-h-screen">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="
+        fixed
+        left-0
+        top-0
+        h-full
+        w-64
+        glass
+        hidden
+        md:flex
+        flex-col
+        p-5
+        z-50
+    "
+>
+
+    <div class="mb-8">
+
+        <h1 class="text-2xl font-bold">
+
+            <span class="gradient-text">
+                GameTI
+            </span>
+
+        </h1>
+
+        <p class="text-gray-400 text-sm">
+            Educando
+        </p>
+
+    </div>
+
+
+    <nav class="space-y-3">
+
+
+        <a
+            href="index.html"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            Início
+
+        </a>
+
+
+        <a
+            href="#conteudo"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            Conteúdo
+
+        </a>
+
+
+        <a
+            href="#jogos"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-gamepad"></i>
+
+            Jogos
+
+        </a>
+
+
+        <a
+            href="#quiz"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-circle-question"></i>
+
+            Quiz
+
+        </a>
+
+
+        <a
+            href="#desafio"
+            class="
+                flex
+                items-center
+                gap-3
+                p-3
+                rounded-xl
+                hover:bg-white/10
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-trophy"></i>
+
+            Desafios
+
+        </a>
+
+    </nav>
+
+
+    <div class="mt-auto">
+
+        <a
+            href="principal.html#dashboard"
+            class="
+                flex
+                items-center
+                justify-center
+                gap-2
+                bg-orange-600
+                hover:bg-orange-500
+                p-3
+                rounded-xl
+                transition
+            "
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Voltar ao Painel
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     CONTEÚDO PRINCIPAL
+===================================================== -->
+
+<main class="md:ml-64 p-5 md:p-10">
+
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header
+    class="
+        flex
+        flex-col
+        md:flex-row
+        justify-between
+        items-start
+        md:items-center
+        gap-5
+        mb-8
+    "
+>
+
+
+    <div>
+
+        <p class="text-orange-400 font-semibold">
+
+            DISCIPLINA
+
+        </p>
+
+
+        <h2 class="text-4xl font-bold mt-1">
+
+            Gestão de
+            <span class="gradient-text">
+                Startup
+            </span>
+
+        </h2>
+
+
+        <p class="text-gray-400 mt-2">
+
+            Transforme ideias em soluções, valide problemas
+            e descubra os fundamentos da criação de uma startup.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- XP -->
+
+    <div class="glass rounded-2xl p-4 min-w-[200px]">
+
+        <div
+            class="
+                flex
+                justify-between
+                text-sm
+                mb-2
+            "
+        >
+
+            <span class="text-gray-400">
+
+                XP da disciplina
+
+            </span>
+
+
+            <span
+                id="xpDisplay"
+                class="font-bold text-orange-400"
+            >
+
+                0 XP
+
+            </span>
+
+        </div>
+
+
+        <div
+            class="
+                w-full
+                bg-gray-800
+                rounded-full
+                h-3
+            "
+        >
+
+            <div
+                id="xpBar"
+                class="
+                    bg-gradient-to-r
+                    from-orange-500
+                    to-pink-500
+                    h-3
+                    rounded-full
+                    transition-all
+                "
+                style="width:0%"
+            ></div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="
+        glass
+        rounded-3xl
+        p-8
+        mb-10
+        relative
+        overflow-hidden
+        neon-border
+    "
+>
+
+
+    <div
+        class="
+            absolute
+            -right-10
+            -top-10
+            text-[180px]
+            text-orange-500/10
+        "
+    >
+
+        <i class="fa-solid fa-rocket"></i>
+
+    </div>
+
+
+    <div class="relative z-10 max-w-3xl">
+
+
+        <span
+            class="
+                inline-block
+                bg-orange-500/20
+                text-orange-300
+                px-4
+                py-2
+                rounded-full
+                text-sm
+                mb-4
+            "
+        >
+
+            <i class="fa-solid fa-rocket mr-2"></i>
+
+            Jornada Empreendedora
+
+        </span>
+
+
+        <h3 class="text-3xl md:text-4xl font-bold mb-4">
+
+            Do Problema à
+            <span class="gradient-text">
+                Startup
+            </span>
+
+        </h3>
+
+
+        <p class="text-gray-300 leading-relaxed">
+
+            Nesta jornada você aprenderá como transformar
+            problemas em oportunidades, desenvolver ideias,
+            conhecer seu público, criar um MVP e validar
+            uma solução.
+
+        </p>
+
+
+        <button
+            onclick="scrollToSection('conteudo')"
+            class="
+                mt-6
+                bg-orange-600
+                hover:bg-orange-500
+                px-6
+                py-3
+                rounded-xl
+                font-semibold
+                transition
+            "
+        >
+
+            Começar Jornada
+
+            <i class="fa-solid fa-arrow-right ml-2"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<section
+    id="conteudo"
+    class="mb-12"
+>
+
+
+    <div class="mb-6">
+
+        <p class="text-orange-400 font-semibold">
+
+            MISSÕES DE APRENDIZADO
+
+        </p>
+
+
+        <h3 class="text-3xl font-bold">
+
+            Trilha da Startup
+
+        </h3>
+
+    </div>
+
+
+
+    <div
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            gap-5
+        "
+    >
+
+
+        <!-- MÓDULO 1 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-orange-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-rocket
+                        text-2xl
+                        text-orange-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-orange-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 01
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                O que é uma Startup?
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Conheça o conceito de startup e entenda
+                algumas de suas características.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-orange-600/20
+                    hover:bg-orange-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 2 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-yellow-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-lightbulb
+                        text-2xl
+                        text-yellow-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-yellow-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 02
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Ideias e Oportunidades
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Aprenda a observar problemas e identificar
+                oportunidades para criar soluções.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-yellow-600/20
+                    hover:bg-yellow-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 3 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-cyan-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-bullseye
+                        text-2xl
+                        text-cyan-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-cyan-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 03
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Público e Problema
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Identifique quem enfrenta o problema e
+                compreenda suas necessidades.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-cyan-600/20
+                    hover:bg-cyan-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 4 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-purple-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-box
+                        text-2xl
+                        text-purple-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-purple-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 04
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                MVP
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Descubra o conceito de Produto Mínimo Viável
+                e sua importância para testar uma ideia.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-purple-600/20
+                    hover:bg-purple-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 5 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-green-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-coins
+                        text-2xl
+                        text-green-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-green-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 05
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Modelo de Negócio
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Entenda como uma startup pode criar,
+                entregar e capturar valor.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-green-600/20
+                    hover:bg-green-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MÓDULO 6 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    rounded-xl
+                    bg-pink-500/20
+                    flex
+                    items-center
+                    justify-center
+                    mb-5
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-chart-line
+                        text-2xl
+                        text-pink-400
+                    "
+                ></i>
+
+            </div>
+
+
+            <span
+                class="
+                    text-xs
+                    text-pink-400
+                    font-bold
+                "
+            >
+
+                MISSÃO 06
+
+            </span>
+
+
+            <h4 class="text-xl font-bold mt-2">
+
+                Validação e Crescimento
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-3">
+
+                Aprenda por que testar uma solução,
+                coletar feedback e analisar resultados
+                são importantes.
+
+            </p>
+
+
+            <button
+                onclick="completeMission(50)"
+                class="
+                    mt-5
+                    w-full
+                    bg-pink-600/20
+                    hover:bg-pink-600
+                    p-3
+                    rounded-xl
+                    transition
+                "
+            >
+
+                Estudar módulo
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     JOGOS
+===================================================== -->
+
+<section
+    id="jogos"
+    class="mb-12"
+>
+
+
+    <p class="text-purple-400 font-semibold">
+
+        ÁREA DE TREINAMENTO
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Jogos de Startup
+
+    </h3>
+
+
+
+    <div
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-3
+            gap-5
+        "
+    >
+
+
+        <!-- JOGO 1 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-lightbulb
+                    text-4xl
+                    text-yellow-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Caçador de Ideias
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Encontre oportunidades e transforme
+                problemas do cotidiano em ideias de negócio.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Caçador de Ideias',100)"
+                class="
+                    mt-5
+                    bg-yellow-600
+                    hover:bg-yellow-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- JOGO 2 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-bullseye
+                    text-4xl
+                    text-cyan-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Encontre o Problema
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Analise situações e descubra qual problema
+                poderia gerar uma oportunidade de negócio.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Encontre o Problema',100)"
+                class="
+                    mt-5
+                    bg-cyan-600
+                    hover:bg-cyan-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- JOGO 3 -->
+
+        <div class="glass rounded-2xl p-6 card-hover">
+
+
+            <i
+                class="
+                    fa-solid
+                    fa-rocket
+                    text-4xl
+                    text-orange-400
+                "
+            ></i>
+
+
+            <h4 class="text-xl font-bold mt-4">
+
+                Monte sua Startup
+
+            </h4>
+
+
+            <p class="text-gray-400 mt-2">
+
+                Escolha problema, público e solução
+                para construir uma ideia de startup.
+
+            </p>
+
+
+            <button
+                onclick="startGame('Monte sua Startup',150)"
+                class="
+                    mt-5
+                    bg-orange-600
+                    hover:bg-orange-500
+                    px-5
+                    py-3
+                    rounded-xl
+                "
+            >
+
+                Jogar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section
+    id="quiz"
+    class="mb-12"
+>
+
+
+    <p class="text-yellow-400 font-semibold">
+
+        TESTE SEUS CONHECIMENTOS
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Quiz de Gestão de Startup
+
+    </h3>
+
+
+
+    <div class="glass rounded-2xl p-6 md:p-8">
+
+
+        <p class="text-sm text-gray-400 mb-3">
+
+            PERGUNTA
+
+            <span id="questionNumber">
+                1
+            </span>
+
+            /5
+
+        </p>
+
+
+        <h4
+            id="question"
+            class="
+                text-xl
+                md:text-2xl
+                font-bold
+                mb-6
+            "
+        ></h4>
+
+
+        <div
+            id="answers"
+            class="grid gap-3"
+        ></div>
+
+
+        <p
+            id="quizResult"
+            class="mt-5 font-semibold"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESAFIO FINAL
+===================================================== -->
+
+<section
+    id="desafio"
+    class="mb-12"
+>
+
+
+    <p class="text-red-400 font-semibold">
+
+        DESAFIO FINAL
+
+    </p>
+
+
+    <h3 class="text-3xl font-bold mb-6">
+
+        Fundador do Futuro
+
+    </h3>
+
+
+
+    <div class="glass rounded-2xl p-6 md:p-8">
+
+
+        <div class="flex items-start gap-4">
+
+
+            <div
+                class="
+                    w-14
+                    h-14
+                    shrink-0
+                    rounded-xl
+                    bg-orange-500/20
+                    flex
+                    items-center
+                    justify-center
+                "
+            >
+
+                <i
+                    class="
+                        fa-solid
+                        fa-rocket
+                        text-orange-400
+                        text-2xl
+                    "
+                ></i>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-xl font-bold">
+
+                    Crie sua ideia de Startup
+
+                </h4>
+
+
+                <p class="text-gray-400 mt-2">
+
+                    Imagine uma startup e descreva:
+                    o problema que ela resolve,
+                    quem são seus usuários e qual solução
+                    você pretende oferecer.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <textarea
+            id="challengeAnswer"
+            class="
+                w-full
+                mt-6
+                bg-black/30
+                border
+                border-white/10
+                rounded-xl
+                p-4
+                min-h-[180px]
+                outline-none
+                focus:border-orange-500
+            "
+            placeholder="Minha startup resolve o problema de..."
+        ></textarea>
+
+
+
+        <button
+            onclick="finishChallenge()"
+            class="
+                mt-4
+                bg-gradient-to-r
+                from-orange-600
+                to-pink-600
+                hover:opacity-90
+                px-6
+                py-3
+                rounded-xl
+                font-semibold
+            "
+        >
+
+            Concluir Desafio
+
+        </button>
+
+
+        <p
+            id="challengeResult"
+            class="mt-4"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
+<footer
+    class="
+        text-center
+        text-gray-500
+        py-8
+    "
+>
+
+    <p>
+        GameTI Educando
+    </p>
+
+    <p class="text-sm mt-1">
+
+        Aprender também pode ser uma aventura.
+
+    </p>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SISTEMA DE XP
+===================================================== */
+
+let xp =
+    Number(
+        localStorage.getItem(
+            "startupXP"
+        )
+    ) || 0;
+
+
+const xpPorNivel = 500;
+
+
+
+function updateXP() {
+
+
+    document.getElementById(
+        "xpDisplay"
+    ).textContent =
+        xp + " XP";
+
+
+    let porcentagem =
+        ((xp % xpPorNivel) /
+        xpPorNivel) * 100;
+
+
+    document.getElementById(
+        "xpBar"
+    ).style.width =
+        porcentagem + "%";
+
+}
+
+
+
+function addXP(valor) {
+
+
+    xp += valor;
+
+
+    localStorage.setItem(
+        "startupXP",
+        xp
+    );
+
+
+    updateXP();
+
+}
+
+
+
+/* =====================================================
+   MISSÕES
+===================================================== */
+
+function completeMission(valor) {
+
+
+    addXP(valor);
+
+
+    alert(
+        "🚀 Missão concluída!\n\n" +
+        "Você ganhou " +
+        valor +
+        " XP!"
+    );
+
+}
+
+
+
+/* =====================================================
+   JOGOS
+===================================================== */
+
+function startGame(nome, recompensa) {
+
+
+    let jogar =
+        confirm(
+            "🎮 " +
+            nome +
+            "\n\n" +
+            "Deseja concluir este treinamento " +
+            "e ganhar " +
+            recompensa +
+            " XP?"
+        );
+
+
+    if(jogar) {
+
+
+        addXP(recompensa);
+
+
+        alert(
+            "🏆 Parabéns!\n\n" +
+            "Você concluiu o jogo e ganhou " +
+            recompensa +
+            " XP!"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions = [
+
+
+    {
+
+        question:
+            "O que é uma startup?",
+
+        answers: [
+
+            [
+                "Uma empresa que busca desenvolver uma solução e crescer em um contexto de inovação",
+                true
+            ],
+
+            [
+                "Somente uma loja física",
+                false
+            ],
+
+            [
+                "Um tipo de computador",
+                false
+            ],
+
+            [
+                "Um programa de edição de texto",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "O que significa MVP?",
+
+        answers: [
+
+            [
+                "Produto Mínimo Viável",
+                true
+            ],
+
+            [
+                "Modelo Virtual de Produção",
+                false
+            ],
+
+            [
+                "Método de Venda Principal",
+                false
+            ],
+
+            [
+                "Mercado de Valor Potencial",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Por que identificar o problema é importante?",
+
+        answers: [
+
+            [
+                "Para compreender uma necessidade que pode ser atendida por uma solução",
+                true
+            ],
+
+            [
+                "Para escolher apenas o nome da empresa",
+                false
+            ],
+
+            [
+                "Para definir somente a cor do logotipo",
+                false
+            ],
+
+            [
+                "Para evitar conhecer os usuários",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Quem é o público-alvo?",
+
+        answers: [
+
+            [
+                "As pessoas para as quais uma solução é direcionada",
+                true
+            ],
+
+            [
+                "Somente os funcionários da empresa",
+                false
+            ],
+
+            [
+                "Somente os investidores",
+                false
+            ],
+
+            [
+                "Somente os concorrentes",
+                false
+            ]
+
+        ]
+
+    },
+
+
+    {
+
+        question:
+            "Por que validar uma ideia?",
+
+        answers: [
+
+            [
+                "Para obter informações e feedback antes de investir mais recursos na solução",
+                true
+            ],
+
+            [
+                "Para evitar conversar com usuários",
+                false
+            ],
+
+            [
+                "Para eliminar qualquer possibilidade de mudança",
+                false
+            ],
+
+            [
+                "Para escolher somente o nome da startup",
+                false
+            ]
+
+        ]
+
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+
+
+function loadQuestion() {
+
+
+    if(
+        currentQuestion >=
+        questions.length
+    ) {
+
+
+        document.getElementById(
+            "question"
+        ).textContent =
+            "🎉 Quiz concluído!";
+
+
+        document.getElementById(
+            "answers"
+        ).innerHTML = "";
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "Você concluiu o Quiz e ganhou 100 XP!";
+
+
+        addXP(100);
+
+
+        return;
+
+    }
+
+
+
+    const q =
+        questions[
+            currentQuestion
+        ];
+
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        currentQuestion + 1;
+
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+
+    const container =
+        document.getElementById(
+            "answers"
+        );
+
+
+    container.innerHTML = "";
+
+
+
+    q.answers.forEach(
+        function(answer) {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.textContent =
+                answer[0];
+
+
+            button.className =
+                `
+                answer
+                bg-white/5
+                hover:bg-white/10
+                p-4
+                rounded-xl
+                text-left
+                transition
+                `;
+
+
+            button.onclick =
+                function() {
+
+
+                    answerQuestion(
+                        button,
+                        answer[1]
+                    );
+
+                };
+
+
+            container.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+
+function answerQuestion(
+    button,
+    correct
+) {
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        function(btn) {
+
+            btn.disabled = true;
+
+        }
+    );
+
+
+
+    if(correct) {
+
+
+        button.classList.add(
+            "bg-green-600/40"
+        );
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "✅ Resposta correta! +20 XP";
+
+
+        addXP(20);
+
+    }
+
+    else {
+
+
+        button.classList.add(
+            "bg-red-600/40"
+        );
+
+
+        document.getElementById(
+            "quizResult"
+        ).textContent =
+            "❌ Resposta incorreta.";
+
+    }
+
+
+
+    setTimeout(
+        function() {
+
+
+            currentQuestion++;
+
+
+            document.getElementById(
+                "quizResult"
+            ).textContent =
+                "";
+
+
+            loadQuestion();
+
+
+        },
+        1200
+    );
+
+}
+
+
+
+/* =====================================================
+   DESAFIO
+===================================================== */
+
+function finishChallenge() {
+
+
+    const answer =
+        document.getElementById(
+            "challengeAnswer"
+        ).value.trim();
+
+
+
+    if(
+        answer.length < 30
+    ) {
+
+
+        document.getElementById(
+            "challengeResult"
+        ).textContent =
+            "⚠️ Desenvolva um pouco mais sua ideia de startup.";
+
+
+        return;
+
+    }
+
+
+
+    addXP(150);
+
+
+    document.getElementById(
+        "challengeResult"
+    ).textContent =
+        "🏆 Desafio concluído! Você ganhou 150 XP.";
+
+}
+
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function scrollToSection(id) {
+
+
+    document
+        .getElementById(id)
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+updateXP();
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
